@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu Principal - Repertoire Téléphonique</title>
+    <link
+      rel="stylesheet"
+      href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/183516/gilroy-webfont.css"
+    />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/menu.css')}}"
+    />
+  </head>
+
+  <body>
+    <!-- @NOTE: the onclicks are used for touch devices since I'm lazy and didnt use <a> tags -->
+    <div class="Menu">
+      <ul class="Menu-list" data-offset="10">
+        <li class="Menu-list-title" data-offset="20">Menu Principal</li>
+        <a href="{{ url_for('ajouter') }}">
+          <li class="Menu-list-item" data-offset="16" onclick>
+            Ajouter
+            <span class="Mask"><span>Ajouter</span></span>
+            <span class="Mask"><span>Ajouter</span></span>
+          </li>
+        </a>
+        <a href="{{ url_for('liste', page=1) }}">
+          <li class="Menu-list-item" data-offset="12" onclick>
+            Liste
+            <span class="Mask"><span>Liste</span></span>
+            <span class="Mask"><span>Liste</span></span>
+          </li>
+        </a>
+        <a href="{{ url_for('recherche') }}">
+          <li class="Menu-list-item" data-offset="8" onclick>
+            Recherche
+            <span class="Mask"><span>Recherche</span></span>
+            <span class="Mask"><span>Recherche</span></span>
+          </li>
+        </a>
+      </ul>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
+  </body>
+</html>
