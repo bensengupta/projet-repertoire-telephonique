@@ -1,83 +1,128 @@
 /* From https://codepen.io/bosworthco/pen/RjBvgw */
 body {
-	 font-family: "Gilroy ExtraBold", system-ui, sans-serif;
-	 font-style: normal;
-	 font-weight: normal;
-	 -webkit-font-smoothing: antialiased;
-	 -webkit-font-kerning: normal;
-	 -webkit-text-size-adjust: 100%;
+  font-family: "Gilroy ExtraBold", system-ui, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-font-kerning: normal;
+  -webkit-text-size-adjust: 100%;
 }
- html, body {
-	 width: 100vw;
-	 height: 100vh;
+html,
+body {
+  width: 100vw;
+  height: 100vh;
 }
- body {
-	 background: linear-gradient(45deg, #ffffff, #f1f1f1);
-	 transform-style: preserve-3d;
-	 transform: perspective(60rem);
-	 position: fixed;
-	 display: flex;
-	 align-items: center;
-	 justify-content: center;
+
+@-webkit-keyframes AnimationName {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
- .Menu-list {
-	 font-size: 4.25rem;
-	 line-height: 1.2;
-	 text-transform: uppercase;
-	 text-align: center;
-	 display: flex;
-	 flex-direction: column;
-	 align-items: center;
-	 transform: rotateX(-10deg) rotateY(20deg);
+@-moz-keyframes AnimationName {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
- .Menu-list-item {
-	 position: relative;
-	 color: transparent;
-	 cursor: pointer;
+@keyframes AnimationName {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
- .Menu-list-item::before {
-	 content: '';
-	 display: block;
-	 position: absolute;
-	 top: 49%;
-	 left: -10%;
-	 right: -10%;
-	 height: 4px;
-	 border-radius: 4px;
-	 margin-top: -2px;
-	 background: #ff2c75;
-	 transform: scale(0);
-	 transition: transform 0.8s cubic-bezier(0.16, 1.08, 0.38, 0.98);
-	 z-index: 1;
+
+body {
+  /* background: linear-gradient(233deg, #9f63ec, #675cc791); */
+  background: linear-gradient(233deg, #ffffff, #e1e1e1);
+  background-size: 400% 400%;
+
+  -webkit-animation: AnimationName 30s ease infinite;
+  -moz-animation: AnimationName 30s ease infinite;
+  animation: AnimationName 30s ease infinite;
+  transform-style: preserve-3d;
+  transform: perspective(60rem);
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
- .Mask {
-	 display: block;
-	 position: absolute;
-	 overflow: hidden;
-	 color: #ff2c75;
-	 top: 0;
-	 height: 49%;
-	 transition: all 0.8s cubic-bezier(0.16, 1.08, 0.38, 0.98);
+.Menu-list {
+  font-size: 4.25rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: rotateX(-10deg) rotateY(20deg);
 }
- .Mask span {
-	 display: block;
+.Menu-list-item {
+  position: relative;
+  color: transparent;
+  cursor: pointer;
 }
- .Mask + .Mask {
-	 top: 48.9%;
-	 height: 51.1%;
+.Menu-list-item::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 49%;
+  left: -10%;
+  right: -10%;
+  height: 4px;
+  border-radius: 4px;
+  margin-top: -2px;
+  background: #ff2c75;
+  transform: scale(0);
+  transition: transform 0.8s cubic-bezier(0.16, 1.08, 0.38, 0.98);
+  z-index: 1;
 }
- .Mask + .Mask span {
-	 transform: translateY(-49%);
+.Mask {
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  color: #ff2c75;
+  top: 0;
+  height: 49%;
+  transition: all 0.8s cubic-bezier(0.16, 1.08, 0.38, 0.98);
 }
- .Menu-list-item:hover .Mask, .Menu-list-item:active .Mask {
-	 color: #b3003e;
-	 transform: skewX(12deg) translateX(5px);
+.Mask span {
+  display: block;
 }
- .Menu-list-item:hover .Mask + .Mask, .Menu-list-item:active .Mask + .Mask {
-	 transform: skewX(12deg) translateX(-5px);
+.Mask + .Mask {
+  top: 48.9%;
+  height: 51.1%;
 }
- .Menu-list-item:hover::before, .Menu-list-item:active::before {
-	 transform: scale(1);
+.Mask + .Mask span {
+  transform: translateY(-49%);
+}
+.Menu-list-item:hover .Mask,
+.Menu-list-item:active .Mask {
+  color: #b3003e;
+  transform: skewX(12deg) translateX(5px);
+}
+.Menu-list-item:hover .Mask + .Mask,
+.Menu-list-item:active .Mask + .Mask {
+  transform: skewX(12deg) translateX(-5px);
+}
+.Menu-list-item:hover::before,
+.Menu-list-item:active::before {
+  transform: scale(1);
 }
 
 /* Custom styles */

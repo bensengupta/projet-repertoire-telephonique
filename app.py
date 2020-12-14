@@ -2,7 +2,6 @@ from flask import Flask, render_template, g, abort, request, redirect, url_for
 from flask_assets import Environment, Bundle
 from pathlib import Path
 import sqlite3
-import random
 
 app = Flask(__name__)
 
@@ -11,9 +10,13 @@ LISTINGS_PER_PAGE = 10
 
 # Tailwind CSS bundle
 assets = Environment(app)
-assets.config['POSTCSS_BIN'] = f'{Path(__file__).parent.absolute()}/node_modules/.bin/postcss'
+assets.config[
+    "POSTCSS_BIN"
+] = f"{Path(__file__).parent.absolute()}/node_modules/.bin/postcss"
 
-tailwindcss = Bundle("css/tailwind.css", filters='postcss', output="dist/css/tailwind.css")
+tailwindcss = Bundle(
+    "css/tailwind.css", filters="postcss", output="dist/css/tailwind.css"
+)
 assets.register("tailwindcss", tailwindcss)
 
 
@@ -77,10 +80,13 @@ def seed_database():
     cur.close()
 
 
-@app.route("/seedDB")
-def seedDB():
+@app.route("/resetDB")
+def resetDB():
+    # 1. erase database
+    # 2. create table
+    # 3. insert sample data
     seed_database()
-    return "Successfully seeded db"
+    return "Successfully reset db"
 
 
 @app.route("/")
@@ -105,7 +111,7 @@ def ajouter():
         code_postal = request.form.get("postal_code")
 
         if prenom and nom and email and tel and pays and rue and ville and code_postal:
-            nom = f"{prenom} {nom}"
+            nom = f"{prenom} {nom}"  # prenom + " " + nom
             adresse = f"{rue}, {code_postal} {ville}"
             region = ""
             if departement:
@@ -222,8 +228,6 @@ ORDER BY RowNum
 if __name__ == "__main__":
     app.run(
         host="0.0.0.0",  # Establishes the host, required for repl to detect the site
-        port=random.randint(
-            2000, 9000
-        ),  # Randomly select the port the machine hosts on.
+        port=3000,
         debug=True,
     )

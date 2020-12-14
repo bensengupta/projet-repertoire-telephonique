@@ -11,7 +11,7 @@
 
   <body>
     <div class="flex flex-col">
-      <div class="md:block md:ml-10 md:pr-4 md:space-x-8">
+      <div class="md:block m-2">
         <a
           href="{{ url_for('index') }}"
           class="font-medium text-indigo-600 hover:text-indigo-500"
@@ -24,27 +24,30 @@
         </h1>
       </div>
     </div>
-
-    <div class="flex h-48 w-full">
-      <div class="flex-grow w-16 h-16" />
-      <div class="flex-shrink w-64 h-16">
-        <form action="/recherche" method="POST" role="search">
-          <label for="search">Search for stuff</label>
+    <div class="grid h-96 place-content-center">
+      <form action="/recherche" method="POST" role="search">
+        <label for="price" class="block text-sm font-medium text-gray-700"
+          >Rechercher</label
+        >
+        <div class="mt-1 relative rounded-md shadow-sm">
           <input
-            id="search"
             type="search"
             name="search"
-            placeholder="Search..."
-            class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
+            id="search"
+            class="focus:ring-indigo-500 focus:border-indigo-500 sm:w-96 w-80 block sm:text-sm border-gray-300 rounded-md"
+            placeholder="Trouvez la personne de vos rêves!!"
             autofocus
             required
           />
-          <button type="submit">Go</button>
-        </form>
-      </div>
-      <div class="flex-grow w-16 h-16" />
+        </div>
+        <button
+          type="submit"
+          class="w-full flex items-center justify-center px-8 py-1 mt-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+        >
+          Lancer la recherche
+        </button>
+      </form>
     </div>
-
     <script src="{{ url_for('static', filename='js/recherche.js') }}"></script>
   </body>
 </html>
