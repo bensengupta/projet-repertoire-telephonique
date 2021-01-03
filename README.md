@@ -2,11 +2,13 @@
 
 # Répertoire téléphonique
 
-## Routes
+Programmes requis:
 
-- `/`: Menu, voir toutes les actions
-- `/ajouter`: Ajouter un numéro avec un form
-- `/ajouter_succes`: Succès après avoir ajouté un numéro
-- `/liste/<int:page>?q=recherche`: Liste de tout les numéros ajoutés
-- `/recherche`: Rechercher une personne / numéro / addresse / email, etc
-- `/404`: Tout autre requêtes
+- [NodeJS](https://nodejs.org/en/download/) pour le CSS
+- [Python 3](https://www.python.org/downloads/) avec les paquets `Flask` et `Flask-Assets`
+  (note: vous pouvez faire `pip install -r ./requirements.txt` pour installer les paquets requis)
+
+Setup:
+
+- Executer `npm install` dans la racine du projet
+- Executer `python app.py` pour lancer l'application
