@@ -128,10 +128,21 @@ def ajouter():
             )
             conn.commit()
 
-            # TODO: add success html page
             return redirect(url_for("liste", page=1))
         else:
             abort(400)
+
+
+@app.route("/supprimer/<int:id>", methods=["POST"])
+def supprimer(id):
+    conn = get_db()
+    cur = conn.cursor()
+
+    cur.execute("DELETE FROM PHONE_DIR WHERE id=?", (id,))
+
+    conn.commit()
+
+    return redirect(url_for("liste", page=1))
 
 
 @app.route("/recherche", methods=["GET", "POST"])
@@ -171,7 +182,7 @@ def liste(page):
         abort(404)
 
     query = f"""
-SELECT  name, email, address, region, phone
+SELECT  id, name, email, address, region, phone
 FROM    ( SELECT    ROW_NUMBER() OVER ( ORDER BY name ) AS RowNum, *
           FROM      PHONE_DIR
         ) AS RowConstrainedResult
@@ -184,7 +195,7 @@ ORDER BY RowNum
     if request.args.get("q"):
         q = f"%{request.args.get('q')}%"
         query = f"""
-SELECT  name, email, address, region, phone
+SELECT  id, name, email, address, region, phone
 FROM    ( SELECT    ROW_NUMBER() OVER ( ORDER BY name ) AS RowNum, *
         FROM      PHONE_DIR
         WHERE name LIKE ? OR email LIKE ? OR phone LIKE ? OR address LIKE ? OR region LIKE ?
