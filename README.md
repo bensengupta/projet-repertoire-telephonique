@@ -2,6 +2,8 @@
 
 # Répertoire téléphonique
 
+Note: Il est fortement recommendé d'utiliser Gitpod qui vient avec déjà avec tout préinstallé. (voir ci-dessus)
+
 Programmes requis:
 
 - [NodeJS](https://nodejs.org/en/download/) pour le CSS
@@ -11,4 +13,7 @@ Programmes requis:
 Setup:
 
 - Executer `npm install` dans la racine du projet
+
+Lancer le serveur web:
+
 - Executer `python app.py` pour lancer l'application
